@@ -5,7 +5,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Xstates = () => {
+const XStates = () => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -90,32 +90,34 @@ const Xstates = () => {
   };
 
   return (
-    <div>
+    <div className="xstates-container">
       <h1> Select Location</h1>
-      <select id="country" value={selectedCountry} onChange={handleCountryChange}>
-        <option value="">Select Country</option>
-        {countries.map((country, index) => (
-          <option key={country} value={country}>
-            {country}
-          </option>
-        ))}
-      </select>
-      <select id="state" onChange={handleStateChange}>
-        <option value="">Select State</option>
-        {states.map((state, index) => (
-          <option key={index} value={state}>
-            {state}
-          </option>
-        ))}
-      </select>
-      <select id="city" onChange={handleCityChange}>
+      <div className="dropdown-container">
+        <select id="country" value={selectedCountry} onChange={handleCountryChange}>
+          <option value="">Select Country</option>
+          {countries.map((country, index) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
+        <select id="state" onChange={handleStateChange}>
+          <option value="">Select State</option>
+          {states.map((state, index) => (
+            <option key={index} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
+        <select id="city" onChange={handleCityChange}>
         <option value="">Select City</option>
         {cities.map((city, index) => (
           <option key={index} value={city}>
             {city}
           </option>
         ))}
-      </select>
+        </select>
+      </div>
       {selectedCity ? (
         <h1>
           You selected {selectedCity},{" "}
@@ -130,4 +132,4 @@ const Xstates = () => {
   );
 };
 
-export default Xstates;
+export default XStates;
