@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.city {
+  color: gray;
+}
+.state {
+  color: blue;
+}
+.country {
+  color: green;
+}
