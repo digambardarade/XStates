@@ -16,7 +16,7 @@ const XStates = () => {
   const fetchCountries = async () => {
     try {
       const response = await axios.get(
-        "https://crio-location-selector.onrender.com/countries"
+        "https://location-selector.labs.crio.do/countries"
       );
       // Ensure unique country names by removing duplicates and filtering out empty values
       const cleanedCountries = response.data
@@ -35,7 +35,7 @@ const XStates = () => {
   const fetchStates = async (countryName) => {
     try {
       const response = await axios.get(
-        `https://crio-location-selector.onrender.com/country=${countryName}/states`
+        `https://location-selector.labs.crio.do/country=${countryName}/states`
       );
       // Ensure unique state names by removing duplicates and filtering out empty values
       const cleanedStates = response.data
@@ -53,7 +53,7 @@ const XStates = () => {
   const fetchCities = async (countryName, stateName) => {
     try {
       const response = await axios.get(
-        `https://crio-location-selector.onrender.com/country=${countryName}/state=${stateName}/cities`
+        `https://location-selector.labs.crio.do/country=${countryName}/state=${stateName}/cities`
       );
       // Ensure unique city names by removing duplicates and filtering out empty values
       const cleanedCities = response.data
