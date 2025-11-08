@@ -75,13 +75,23 @@ const XStates = () => {
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
     setSelectedCountry(selectedCountry);
-    fetchStates(selectedCountry);
+    setSelectedState(""); // Reset state selection
+    setSelectedCity(""); // Reset city selection
+    setStates([]); // Clear states array
+    setCities([]); // Clear cities array
+    if (selectedCountry) {
+      fetchStates(selectedCountry);
+    }
   };
 
   const handleStateChange = (event) => {
     const selectedState = event.target.value;
     setSelectedState(selectedState);
-    fetchCities(selectedCountry, selectedState);
+    setSelectedCity(""); // Reset city selection
+    setCities([]); // Clear cities array
+    if (selectedState) {
+      fetchCities(selectedCountry, selectedState);
+    }
   };
 
   const handleCityChange = (event) => {
@@ -101,7 +111,7 @@ const XStates = () => {
             </option>
           ))}
         </select>
-        <select id="state" onChange={handleStateChange}>
+        <select id="state" value={selectedState} onChange={handleStateChange} disabled={!selectedCountry}>
           <option value="">Select State</option>
           {states.map((state, index) => (
             <option key={index} value={state}>
@@ -109,13 +119,13 @@ const XStates = () => {
             </option>
           ))}
         </select>
-        <select id="city" onChange={handleCityChange}>
-        <option value="">Select City</option>
-        {cities.map((city, index) => (
-          <option key={index} value={city}>
-            {city}
-          </option>
-        ))}
+        <select id="city" value={selectedCity} onChange={handleCityChange} disabled={!selectedState}>
+          <option value="">Select City</option>
+          {cities.map((city, index) => (
+            <option key={index} value={city}>
+              {city}
+            </option>
+          ))}
         </select>
       </div>
       {selectedCity ? (
